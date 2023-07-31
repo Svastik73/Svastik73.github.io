@@ -1,4 +1,6 @@
+import 'package:catalog/widgets/drawer.dart';
 import 'package:flutter/material.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
   // ignore: non_constant_identifier_names
@@ -6,17 +8,20 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+      // scaffold return complete appbar and etc
       appBar: AppBar(
-        title: Text("Cataloge app!"),
-        backgroundColor: Color.fromARGB(255, 0, 255, 225),
-        shadowColor: Color.fromARGB(255, 16, 15, 14),
+        title: Text(
+          textAlign: TextAlign.start,
+          "BELUGA inc",
+          style: TextStyle(fontStyle: FontStyle.normal),
+        ),
       ),
       body: Center(
         child: Container(
           child: Text("Hello"),
         ),
       ),
-      drawer: Drawer(),
+      drawer: MyDrawer(),
     );
   }
 }
