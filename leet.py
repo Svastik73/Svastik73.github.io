@@ -1,14 +1,28 @@
-class Solution(object):
-    def originalDigits(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
-        dic={}
-        for i in range(len(s)):
-            if s[i] not in dic:
-                dic[s[i]]=0
-            dic[s[i]]+=1
-        arr=[0]*10 #store 0 to 9 digit count!
-        ls=dic.keys()
-        
+def solution(H, X, Y):
+    H.sort(reverse=True)
+
+    tot = 0
+    timex = 0
+    timey = 0
+
+    for i in range(len(H)):
+        if timex + H[i] <= X and timey + H[i] <= Y:
+            if timex <= timey:
+                timex += H[i]
+            else:
+                timey += H[i]
+            tot += 1
+        elif timex + H[i] <= X:
+            timex += H[i]
+            tot += 1
+        elif timey + H[i]<= Y:
+            timey += H[i]
+            tot += 1
+
+    return tot
+
+# Example usage:
+H = [1, 1, 3]
+X = 1
+Y = 1
+print(solution(H, X, Y))  # Output: 4
