@@ -1,5 +1,7 @@
-class catmodel {
-  static final Items = [
+// ignore_for_file: empty_constructor_bodies
+
+class CatModel {
+  static List<Item> items = [
     Item(
       id: "skzr00001",
       name: "Mercedes A class",
@@ -27,4 +29,23 @@ class Item {
       required this.price,
       required this.color,
       required this.imgurl});
+  factory Item.fromMap(Map<String, dynamic> map) {
+    return Item(
+      // convert map to class
+      id: map["id"],
+      name: map["name"],
+      desc: map["desc"],
+      price: map["price"],
+      color: map["color"],
+      imgurl: map["imgurl"],
+    );
+  }
+  toMap() => {
+        "id": id,
+        "name": name,
+        "desc": desc,
+        price: "price",
+        color: "color",
+        imgurl: "imgurl"
+      };
 }

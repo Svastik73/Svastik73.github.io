@@ -11,7 +11,8 @@ class itemwidget extends StatelessWidget {
     return Card(
         elevation: 2.0,
         child: ListTile(
-          shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(3)),
+          shape:
+              BeveledRectangleBorder(borderRadius: BorderRadius.circular(500)),
           leading: Image.network(item.imgurl),
           title: Text(
             item.name,
@@ -22,7 +23,7 @@ class itemwidget extends StatelessWidget {
           trailing: Text(
             "\$${item.price}",
             style: TextStyle(
-                color: Colors.deepPurpleAccent, fontWeight: FontWeight.w500),
+                color: Colors.deepPurpleAccent, fontWeight: FontWeight.bold),
           ),
         ));
   }
