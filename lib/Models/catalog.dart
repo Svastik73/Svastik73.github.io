@@ -9,7 +9,7 @@ class CatModel {
       color: 'Red',
       price: 4800000,
       imgurl:
-          "https://imgd.aeplcdn.com/1280x720/n/cw/ec/148959/mercedes-benz-a-class-limousine-left-front-three-quarter0.jpeg?isig=0",
+          "https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cms.haymarketindia.net/model/uploads/modelimages/Mercedes-Benz-A-Class-Limousine-100420211633.jpg&w=373&h=245&q=75&c=1",
     ),
   ];
 }

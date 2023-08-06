@@ -49,6 +49,8 @@ class _HomePageState extends State<HomePage> {
             ? GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 20,
                 ),
                 itemBuilder: (context, index) {
                   final item = CatModel.items[index];
@@ -58,17 +60,24 @@ class _HomePageState extends State<HomePage> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(13)),
                       child: GridTile(
-                          header: Text(
-                            item.name,
-                            textAlign: TextAlign.center,
-                            textScaleFactor: 1.1,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
+                          header: Container(
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(),
+                              child: Text(
+                                item.name,
+                                textAlign: TextAlign.center,
+                                textScaleFactor: 1.1,
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: const Color.fromARGB(
+                                        255, 142, 145, 161)),
+                              )),
                           footer: Text(
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.teal,
-                                  fontSize: 15,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.bold),
                               item.price.toString()),
                           child: Image.network(item.imgurl)));

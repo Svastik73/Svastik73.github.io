@@ -7,7 +7,7 @@
             "color": "Red",
             "price": 4800000,
             "imgurl":
-                "https://imgd.aeplcdn.com/1280x720/n/cw/ec/148959/mercedes-benz-a-class-limousine-left-front-three-quarter0.jpeg?isig=0"
+                "https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cms.haymarketindia.net/model/uploads/modelimages/Mercedes-Benz-A-Class-Limousine-100420211633.jpg&w=373&h=245&q=75&c=1"
         },
         {
             "id": "2",
@@ -49,7 +49,16 @@
             "color": "Yellow",
             "price": 6500000,
             "imgurl":"https://images.pexels.com/photos/9334966/pexels-photo-9334966.jpeg?cs=srgb&dl=pexels-ishan-kulshrestha-9334966.jpg&fm=jpg"
+          },
+          {
+            "id": "7",
+            "name": "Pagani Zonda",
+            "desc": "Pagani Zonda Supercar",
+            "color": "Indigo",
+            "price": 56000000,
+            "imgurl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpKqflGZvNQTKypRqTQeCCg6lQ0wB70jbwyg&usqp=CAU"
           }
+
           
           
           
