@@ -53,9 +53,10 @@ class _HomePageState extends State<HomePage> {
                 itemBuilder: (context, index) {
                   final item = CatModel.items[index];
                   return Card(
+                      surfaceTintColor: Colors.white24,
                       clipBehavior: Clip.antiAlias,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40)),
+                          borderRadius: BorderRadius.circular(13)),
                       child: GridTile(
                           header: Text(
                             item.name,
@@ -63,6 +64,13 @@ class _HomePageState extends State<HomePage> {
                             textScaleFactor: 1.1,
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
+                          footer: Text(
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.teal,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold),
+                              item.price.toString()),
                           child: Image.network(item.imgurl)));
                 },
                 itemCount: CatModel.items.length,
