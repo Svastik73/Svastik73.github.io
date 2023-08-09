@@ -1,9 +1,12 @@
 import 'dart:convert';
 import 'package:catalog/Models/catalog.dart';
 import 'package:catalog/widgets/drawer.dart';
+import 'package:catalog/widgets/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../widgets/item_widget.dart';
+import "package:velocity_x/velocity_x.dart";
 
 class HomePage extends StatefulWidget {
   @override
@@ -35,58 +38,116 @@ class _HomePageState extends State<HomePage> {
     //final dumlist = List.generate(50, (index) => catmodel.Items[0]);
     return Scaffold(
       // scaffold return complete appbar and etc
-      appBar: AppBar(
-        title: Text(
-          textAlign: TextAlign.start,
-          "BELUGA inc",
-          style: TextStyle(fontStyle: FontStyle.normal),
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: (CatModel.items != null &&
-                CatModel.items.isNotEmpty) // 2 value in row
-            ? GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 20,
-                ),
-                itemBuilder: (context, index) {
-                  final item = CatModel.items[index];
-                  return Card(
-                      surfaceTintColor: Colors.white24,
-                      clipBehavior: Clip.antiAlias,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(13)),
-                      child: GridTile(
-                          header: Container(
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(),
-                              child: Text(
-                                item.name,
-                                textAlign: TextAlign.center,
-                                textScaleFactor: 1.1,
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: const Color.fromARGB(
-                                        255, 142, 145, 161)),
-                              )),
-                          footer: Text(
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.teal,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold),
-                              item.price.toString()),
-                          child: Image.network(item.imgurl)));
-                },
-                itemCount: CatModel.items.length,
-              )
-            : Center(child: CircularProgressIndicator()),
-      ),
-      drawer: MyDrawer(),
+      backgroundColor: Color.fromARGB(255, 242, 241, 242),
+      body: SafeArea(
+          child: Container(
+              padding: Vx.m32,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CatalogHead(),
+                  if (CatModel.items != null && CatModel.items.isNotEmpty)
+                    CatalogList().expand()
+                  else
+                    Center(child: CircularProgressIndicator()),
+                ],
+              ))),
     );
+  }
+}
+
+class CatalogHead extends StatelessWidget {
+  @override
+  Widget build(Object context) {
+    // TODO: implement build
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        "BELUGA inc"
+            .text
+            .bold
+            .xl4
+            .color(MyTheme.darkBluishColor)
+            .make(), // equal to Text("")
+        "TOP PICKS".text.xl2.color(Color.fromARGB(255, 40, 110, 71)).make(),
+      ],
+    );
+  }
+}
+
+class CatalogList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: CatModel.items.length,
+      itemBuilder: (context, index) {
+        final catalog = CatModel.items[index];
+        return CatalogItem(catalog: catalog);
+      },
+    );
+  }
+}
+
+class CatalogItem extends StatelessWidget {
+  @override
+  final Item catalog;
+  const CatalogItem({key, required this.catalog})
+      : assert(catalog != null),
+        super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return VxBox(
+        child: Row(children: [
+      // return constructor here
+
+      CatalogImage(image: catalog.imgurl),
+      Expanded(
+          // expands row!
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+            catalog.name.text.xl2.color(Colors.teal).make(),
+            Text(
+              "Desc: ",
+              style: TextStyle(color: Colors.black),
+            ),
+            catalog.desc.text
+                .textStyle(context.captionStyle)
+                .color(Colors.blueGrey)
+                .make(),
+            ButtonBar(alignment: MainAxisAlignment.spaceBetween, children: [
+              "\$${catalog.price}".text.bold.xl.make(),
+              ElevatedButton(
+                  onPressed: () {},
+                  // need to change material state to change its color!
+                  style: ButtonStyle(
+                      // All means click, hover all
+                      backgroundColor: MaterialStatePropertyAll(Colors.teal)),
+                  child: "Buy".text.make())
+            ])
+          ]))
+    ])).white.rounded.square(200).make();
+  }
+}
+
+class CatalogImage extends StatelessWidget {
+  final String image;
+  const CatalogImage({Key? key, required this.image}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Image.network(
+      image,
+    )
+        .box
+        .width(100)
+        .rounded
+        .height(89)
+        .p8
+        .color(MyTheme.creamColor)
+        .make()
+        .p16()
+        .wOneThird(context);
   }
 }
