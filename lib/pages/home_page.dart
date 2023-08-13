@@ -8,6 +8,9 @@ import 'package:google_fonts/google_fonts.dart';
 import '../widgets/item_widget.dart';
 import "package:velocity_x/velocity_x.dart";
 
+import 'home_widgets/catalog_header.dart';
+import 'home_widgets/catalog_list.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -52,39 +55,6 @@ class _HomePageState extends State<HomePage> {
                     Center(child: CircularProgressIndicator()),
                 ],
               ))),
-    );
-  }
-}
-
-class CatalogHead extends StatelessWidget {
-  @override
-  Widget build(Object context) {
-    // TODO: implement build
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        "BELUGA inc"
-            .text
-            .bold
-            .xl4
-            .color(MyTheme.darkBluishColor)
-            .make(), // equal to Text("")
-        "TOP PICKS".text.xl2.color(Color.fromARGB(255, 40, 110, 71)).make(),
-      ],
-    );
-  }
-}
-
-class CatalogList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: CatModel.items.length,
-      itemBuilder: (context, index) {
-        final catalog = CatModel.items[index];
-        return CatalogItem(catalog: catalog);
-      },
     );
   }
 }
