@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import '../../widgets/themes.dart';
@@ -14,7 +15,7 @@ class CatalogHead extends StatelessWidget {
             .text
             .bold
             .xl4
-            .color(MyTheme.darkBluishColor)
+            .color(Colors.teal)
             .make(), // equal to Text("")
         "TOP PICKS".text.xl2.color(Color.fromARGB(255, 40, 110, 71)).make(),
       ],

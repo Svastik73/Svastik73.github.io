@@ -1,10 +1,10 @@
+
 import 'package:catalog/pages/home_detail_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../../Models/catalog.dart';
-
+import 'add_to_cart.dart';
 import 'catalog_image.dart';
 
 class CatalogList extends StatelessWidget {
@@ -17,7 +17,7 @@ class CatalogList extends StatelessWidget {
         final catalog = CatModel.items[index];
         return InkWell(
             onTap: () => Navigator.push(
-                  context, // on clicking it navogates to its own page!
+                  context, // on clicking it navigates to its own page!
                   MaterialPageRoute(
                     builder: (context) => HomeDetailPage(
                       catalog: catalog,
@@ -41,8 +41,10 @@ class CatalogItem extends StatelessWidget {
     return VxBox(
         child: Row(children: [
       // return constructor here
-
-      CatalogImage(image: catalog.imgurl),
+      Hero(
+        tag: Key(catalog.id.toString()),
+        child: CatalogImage(image: catalog.imgurl),
+      ),
       Expanded(
           // expands row!
           child: Column(
@@ -60,15 +62,9 @@ class CatalogItem extends StatelessWidget {
                 .make(),
             ButtonBar(alignment: MainAxisAlignment.spaceBetween, children: [
               "\$${catalog.price}".text.bold.xl.make(),
-              ElevatedButton(
-                  onPressed: () {},
-                  // need to change material state to change its color!
-                  style: ButtonStyle(
-                      // All means click, hover all
-                      backgroundColor: MaterialStatePropertyAll(Colors.teal)),
-                  child: "Buy".text.make())
+              AddToCart(catalog: catalog), // pass to next class constructor!
             ])
           ]))
-    ])).white.rounded.square(200).make();
+    ])).color(context.cardColor).white.rounded.square(200).make();
   }
 }

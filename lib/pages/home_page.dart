@@ -1,15 +1,18 @@
 import 'dart:convert';
+import 'package:catalog/Models/cart.dart';
 import 'package:catalog/Models/catalog.dart';
-import 'package:catalog/widgets/drawer.dart';
+import 'package:catalog/store/store.dart';
+import 'package:catalog/utils/routes.dart';
+//import 'package:catalog/widgets/drawer.dart';
 import 'package:catalog/widgets/themes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../widgets/item_widget.dart';
 import "package:velocity_x/velocity_x.dart";
-
 import 'home_widgets/catalog_header.dart';
 import 'home_widgets/catalog_list.dart';
+import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   @override
@@ -18,6 +21,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   // ignore: non_constant_identifier_names
+  final url = "";
   @override
   void initState() {
     // TODO: implement initState
@@ -39,9 +43,23 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     // TODO: implement build
     //final dumlist = List.generate(50, (index) => catmodel.Items[0]);
+    final _cart = (VxState.store as MyStore).cart;
     return Scaffold(
       // scaffold return complete appbar and etc
       backgroundColor: Color.fromARGB(255, 242, 241, 242),
+      floatingActionButton: VxBuilder(
+        mutations: {AddMutation, RemoveMutation},
+        builder: (context, _, __) => FloatingActionButton(
+          tooltip: "See your cart!",
+          onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+          backgroundColor: Color.fromARGB(154, 126, 198, 181),
+          child: Icon(CupertinoIcons.car_fill),
+        ).badge(
+            color: const Color.fromARGB(255, 208, 237, 235),
+            count: _cart.items.length,
+            textStyle:
+                TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+      ),
       body: SafeArea(
           child: Container(
               padding: Vx.m32,
@@ -50,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   CatalogHead(),
                   if (CatModel.items != null && CatModel.items.isNotEmpty)
-                    CatalogList().expand()
+                    CatalogList().py16().expand() // expand the tab
                   else
                     Center(child: CircularProgressIndicator()),
                 ],
@@ -89,16 +107,18 @@ class CatalogItem extends StatelessWidget {
                 .make(),
             ButtonBar(alignment: MainAxisAlignment.spaceBetween, children: [
               "\$${catalog.price}".text.bold.xl.make(),
+              tooltip("Add to the cart"), //show message when long presses
               ElevatedButton(
                   onPressed: () {},
                   // need to change material state to change its color!
                   style: ButtonStyle(
+
                       // All means click, hover all
                       backgroundColor: MaterialStatePropertyAll(Colors.teal)),
                   child: "Buy".text.make())
             ])
           ]))
-    ])).white.rounded.square(200).make();
+    ])).white.rounded.square(400).make();
   }
 }
 
