@@ -1,0 +1,68 @@
+{
+    "products":[
+        {
+            "id": 1,
+            "name": "Mercedes A class",
+            "desc": "Mercedes-Benz A-Class Limousine",
+            "color": "Red",
+            "price": 35000,
+            "imgurl":
+                "https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cms.haymarketindia.net/model/uploads/modelimages/Mercedes-Benz-A-Class-Limousine-100420211633.jpg&w=373&h=245&q=75&c=1"
+        },
+        {
+            "id": 2,
+            "name": "Audi Q5",
+            "desc": "Audi Q5 Premium SUV",
+            "color": "White",
+            "price": 43500,
+            "imgurl": "https://imgd.aeplcdn.com/664x374/n/cw/ec/53591/q5-facelift-exterior-right-front-three-quarter-3.jpeg?isig=0&q=75&q=75"
+          },
+          {
+            "id": 3,
+            "name": "BMW 3 Series",
+            "desc": "BMW 3 Series Sedan",
+            "color": "Blue",
+            "price": 98000,
+            "imgurl": "https://imgd.aeplcdn.com/664x374/cw/ec/37067/BMW-3-Series-Exterior-167583.jpg?wm=0&q=75&q=75"
+          },
+          {
+            "id": 4,
+            "name": "Toyota Camry",
+            "desc": "Toyota Camry Hybrid",
+            "color": "Silver",
+            "price": 27000,
+            "imgurl": "https://stimg.cardekho.com/images/car-images/large/Toyota/Camry/10926/1690544761441/front-left-side-47.jpg"
+          }
+          ,
+          {
+            "id": 5,
+            "name": "Honda Civic",
+            "desc": "Honda Civic Sedan",
+            "color": "White",
+            "price": 25000,
+            "imgurl": "https://imgd-ct.aeplcdn.com/1056x660/n/cw/ec/27074/civic-exterior-left-front-three-quarter.jpeg?q=75"
+          },
+          {
+            "id": 6,
+            "name": "Ford Mustang",
+            "desc": "Ford Mustang GT Coupe",
+            "color": "Yellow",
+            "price": 50000,
+            "imgurl":"https://images.pexels.com/photos/9334966/pexels-photo-9334966.jpeg?cs=srgb&dl=pexels-ishan-kulshrestha-9334966.jpg&fm=jpg"
+          },
+          {
+            "id": 7,
+            "name": "Pagani Zonda",
+            "desc": "Pagani Zonda Supercar",
+            "color": "Indigo",
+            "price": 400680,
+            "imgurl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpKqflGZvNQTKypRqTQeCCg6lQ0wB70jbwyg&usqp=CAU"
+          }
+
+          
+          
+          
+          
+          
+    ]
+}
